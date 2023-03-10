@@ -11,7 +11,7 @@ import { BrowserRouter as Router,
 function Rutas() {
   return (
     <Router>
-    <Routes>
+    <Routes> 
         <Route path="/login" element={ <Login/>}/>  
         <Route path="/" element={<Precios/>}/>
         <Route path="*" element={<h1>404 Not Found</h1>}/>

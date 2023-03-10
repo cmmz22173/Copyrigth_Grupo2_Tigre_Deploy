@@ -12,15 +12,27 @@ import StarIcon from '@mui/icons-material/StarBorder';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Linked from '@mui/material/Link';
+import logoLanding from '../images/logoLanding.png'
 import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
 import { Link } from "react-router-dom";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import Slidershow from '../components/Slideshow';
 
 
+
+function Slide(props) {
+  return(
+      
+        <Slidershow {...props}/>
+      
+  );
+}
 
 
 function Copyright(props) {
   return (
+    
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
@@ -97,22 +109,29 @@ const footers = [
   },
 ];
 
-function PricingContent() {
+
+ function PricingContent() {
   
   return (
     <React.Fragment>
       <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none'} }} />
       <CssBaseline />
-      <AppBar
+      <AppBar 
         position="static"
         color="inherit"
         elevation={0}
         sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}`}}
        
       >
-        <Toolbar sx={{ flexWrap: 'wrap' }}>
+        <Toolbar sx={{ flexWrap: 'wrap',  background:  '#e8f3fb', width: '100%'}}>
+        <Box component="img"
+            sx={{
+            height: 110
+            ,
+            }}
+            src={logoLanding}/>
           <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-            CARWASH
+          
           </Typography>
           <nav>
             <Linked
@@ -139,16 +158,24 @@ function PricingContent() {
               Support
             </Linked>
           </nav>
-           <Link to={"/login"}>
-            <Button variant="outlined" sx={{ my: 1, mx: 1.5 }}>
+           <Link to={"/login"} style={{ textDecoration: 'none' }}>
+            <Button variant="inherent" sx={{ my: 1, mx: 1.5 }}>
            
-            Login
+            <AccountCircleIcon fontSize="large" sx={{ color: ' #3762a1'}}  />
             </Button>
           </Link>
         </Toolbar>
       </AppBar>
-      {/* Hero unit */}
-      <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}>
+      {/* Hero unit */} 
+
+      
+      <Box sx={{ margin: 0}}>
+      <Slide/>
+      </Box>
+      
+
+      <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 4, pb: 6 }}>
+
         <Typography
           component="h1"
           variant="h2"
@@ -158,6 +185,9 @@ function PricingContent() {
         >
           Pricing
         </Typography>
+
+         
+
         <Typography variant="h5" align="center" color="text.secondary" component="p">
           Quickly build an effective pricing table for your potential customers with
           this layout. It&apos;s built with default MUI components with little
@@ -267,5 +297,7 @@ function PricingContent() {
 }
 
 export default function Pricing() {
-  return <PricingContent />;
+  return <PricingContent/>;
 }
+
+

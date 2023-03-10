@@ -5,7 +5,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -14,15 +13,14 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import '../styles/Login.css'
 import logo from '../images/CleanJazz.png'
 import car from '../images/car1.jpg'
+import { Link } from "react-router-dom";
 
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Clean Jazz
-      </Link>{' '}
       {new Date().getFullYear()}
+      {' Clean Jazz'}
       {'.'}
     </Typography>
   );
@@ -71,12 +69,14 @@ export default function SignInSide() {
               
             }}
           >
-      
-            <Avatar sx={{ m: 1, width: 250,height: 250}} src={logo}/>
-             
+
+        
+            <Link to={"/"} style={{ textDecoration: 'none' }}>
+            <Avatar sx={{ m: 1, width: 210,height: 210}} src={logo}/>
+            </Link> 
               
             <Typography component="h1" variant="h5">
-              Sign in
+              Iniciar Sesión
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1}}>
               <TextField
@@ -84,7 +84,7 @@ export default function SignInSide() {
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
+                label="Correo Electrónico"
                 name="email"
                 autoComplete="email"
                 autoFocus
@@ -96,7 +96,7 @@ export default function SignInSide() {
                 required
                 fullWidth
                 name="password"
-                label="Password"
+                label="Contraseña"
                 type="password"
                 id="password"
                 autoComplete="current-password"
@@ -104,29 +104,29 @@ export default function SignInSide() {
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
+                label="Recuérdame"
               />
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2,backgroundColor: '#F7C04A',
+                sx={{ mt: 2, mb: 1,backgroundColor: '#F7C04A',
                 '&:hover': {
                   backgroundColor: '#E7B10A',
                   
                 },}}
               >
-                Sign In
+                Iniciar Sesión
               </Button>
               <Grid container>
                 <Grid item xs>
                   <Link href="#" variant="body2">
-                    Forgot password?
+                  ¿Has olvidado la contraseña?
                   </Link>
                 </Grid>
                 <Grid item>
                   <Link href="#" variant="body2">
-                    {"Don't have an account? Sign Up"}
+                    {"¿No tienes una cuenta? Regístrate"}
                   </Link>
                 </Grid>
               </Grid>
@@ -135,6 +135,9 @@ export default function SignInSide() {
           </Box>
         </Grid>
       </Grid>
+
+      
+
     </ThemeProvider>
   );
 }
