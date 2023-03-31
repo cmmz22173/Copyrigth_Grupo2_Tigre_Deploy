@@ -6,6 +6,8 @@ import { BrowserRouter as Router,
  } from "react-router-dom";
  import Login from "../pages/Login"
  import Precios from '../pages/Precios'
+ import Dash from '../pages/Dash'
+ import Error from '../pages/Error'
 
  
 function Rutas() {
@@ -14,7 +16,8 @@ function Rutas() {
     <Routes> 
         <Route path="/login" element={ <Login/>}/>  
         <Route path="/" element={<Precios/>}/>
-        <Route path="*" element={<h1>404 Not Found</h1>}/>
+        <Route path='/dash' element={<Dash/>}/>
+        <Route path="*" element={<Error/>}/>
         
     </Routes>
 </Router>
