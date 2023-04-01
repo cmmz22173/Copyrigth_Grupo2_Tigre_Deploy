@@ -7,8 +7,7 @@ import { BrowserRouter as Router,
  import Login from "../pages/Login"
  import Precios from '../pages/Precios'
  import Prueba from "../pages/PruebaLogin"
-
- import Dash from '../pages/Dash'
+ import Home from '../pages/Home'
  import Error from '../pages/Error'
 
 
@@ -23,7 +22,7 @@ function Rutas() {
         <Route path="*" element={<h1>404 Not Found</h1>}/>
         <Route path="/prueba" element={<Prueba/>}/>
 
-        <Route path='/dash' element={<Dash/>}/>
+        <Route path='/home' element={<Home/>}/>
         <Route path="*" element={<Error/>}/>
         
 
