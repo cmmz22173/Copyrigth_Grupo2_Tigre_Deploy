@@ -106,6 +106,7 @@ export default function SignInSide() {
                 control={<Checkbox value="remember" color="primary" />}
                 label="Recuérdame"
               />
+              <Link to={"/home"} style={{ textDecoration: 'none' }}>
               <Button
                 type="submit"
                 fullWidth
@@ -118,6 +119,7 @@ export default function SignInSide() {
               >
                 Iniciar Sesión
               </Button>
+              </Link>
               <Grid container>
                 <Grid item xs>
                   <Link href="#" variant="body2">

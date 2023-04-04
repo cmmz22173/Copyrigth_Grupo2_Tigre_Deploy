@@ -12,7 +12,7 @@ import IconButton from '@mui/material/IconButton';
 import Badge from '@mui/material/Badge';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import Link from '@mui/material/Link';
+
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -33,6 +33,7 @@ import garage from '../images/garage.png'
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import discount from '../images/discount.png'
+import { Link } from "react-router-dom";
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -98,7 +99,7 @@ const mdTheme = createTheme();
 
 function DashboardContent() {
   
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const toggleDrawer = () => {
     setOpen(!open);
 
@@ -137,9 +138,9 @@ function DashboardContent() {
               sx={{ flexGrow: 1 }}
             >
 
-
+              <Link to={"/home"}>
                 <Avatar sx={{ m: 0, width: 65,height: 65}} src={logoLanding}/>
-
+              </Link>
 
             </Typography>
             <IconButton color="inherit">
@@ -326,18 +327,20 @@ function DashboardContent() {
                     </Typography>
                   </CardContent>
                   <CardActions sx={{ position: 'absolute', bottom: 10, right: 10, display: 'flex', justifyContent: 'flex-end' }}>
-                  <IconButton sx={{
-                     '&:hover': {
-                      backgroundColor: '#FFCC1D',
-                    },
-                     borderRadius: 100,
-                     background: " #FEA500",
-                     width:60,
-                     height:60,
-                     boxShadow:"0px 4px 4px rgba(0, 0, 0, 0.25)"
-                     }} variant="contained" aria-label="delete">
-                        <ArrowForwardIosIcon sx={{color:"white"}}/>
-                  </IconButton>
+                    <Link to={"/servicios"}> 
+                      <IconButton sx={{
+                        '&:hover': {
+                          backgroundColor: '#FFCC1D',
+                        },
+                        borderRadius: 100,
+                        background: " #FEA500",
+                        width:60,
+                        height:60,
+                        boxShadow:"0px 4px 4px rgba(0, 0, 0, 0.25)"
+                        }} variant="contained" aria-label="delete">
+                            <ArrowForwardIosIcon sx={{color:"white"}}/>
+                      </IconButton>
+                      </Link> 
                   </CardActions>
                 </Card>
 
@@ -362,6 +365,7 @@ function DashboardContent() {
                   </Typography>
                 </CardContent>
                 <CardActions sx={{ position: 'absolute', bottom: 10, right: 10, display: 'flex', justifyContent: 'flex-end' }}>
+                <Link to={"/vehiculos"}>
                 <IconButton sx={{
                      '&:hover': {
                       backgroundColor: '#FFCC1D',
@@ -374,6 +378,7 @@ function DashboardContent() {
                      }} variant="contained" aria-label="delete">
                         <ArrowForwardIosIcon sx={{color:"white"}}/>
                   </IconButton>
+                  </Link>
                 </CardActions>
               </Card>
 
@@ -398,18 +403,20 @@ function DashboardContent() {
                   </Typography>
                 </CardContent>
                 <CardActions sx={{ position: 'absolute', bottom: 10, right: 10, display: 'flex', justifyContent: 'flex-end' }}>
-                  <IconButton sx={{
-                     '&:hover': {
-                      backgroundColor: '#FF8E00',
-                    },
-                     borderRadius: 100,
-                     background: "#FF5C28;",
-                     width:60,
-                     height:60,
-                     boxShadow:"0px 4px 4px rgba(0, 0, 0, 0.25)"
-                     }} variant="contained" aria-label="delete">
-                        <LocalOfferIcon sx={{color:"white"}}/>
-                  </IconButton>
+                  <Link to={"/promociones"}>
+                    <IconButton sx={{
+                      '&:hover': {
+                        backgroundColor: '#FF8E00',
+                      },
+                      borderRadius: 100,
+                      background: "#FF5C28;",
+                      width:60,
+                      height:60,
+                      boxShadow:"0px 4px 4px rgba(0, 0, 0, 0.25)"
+                      }} variant="contained" aria-label="delete">
+                          <LocalOfferIcon sx={{color:"white"}}/>
+                    </IconButton>
+                  </Link>
                 </CardActions>
               </Card>
               </Stack>      

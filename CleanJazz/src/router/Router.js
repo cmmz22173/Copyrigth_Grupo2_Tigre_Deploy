@@ -9,9 +9,9 @@ import { BrowserRouter as Router,
  import Prueba from "../pages/PruebaLogin"
  import Home from '../pages/Home'
  import Error from '../pages/Error'
-
-
- 
+ import Vehiculos from '../pages/Vehiculos';
+ import Servicios from '../pages/Servicios';
+ import Ofertas from '../pages/Ofertas';
 function Rutas() {
   return (
     <Router>
@@ -25,7 +25,9 @@ function Rutas() {
         <Route path='/home' element={<Home/>}/>
         <Route path="*" element={<Error/>}/>
         
-
+        <Route path='/vehiculos' element={<Vehiculos/>}/>
+        <Route path='/servicios' element={<Servicios/>}/>
+        <Route path='/promociones' element={<Ofertas/>}/>
     </Routes>
 </Router>
   );
