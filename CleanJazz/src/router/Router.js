@@ -19,7 +19,6 @@ function Rutas() {
         <Route path="/login" element={ <Login/>}/>  
         <Route path="/" element={<Precios/>}/>
 
-        <Route path="*" element={<h1>404 Not Found</h1>}/>
         <Route path="/prueba" element={<Prueba/>}/>
 
         <Route path='/home' element={<Home/>}/>
@@ -28,6 +27,7 @@ function Rutas() {
         <Route path='/vehiculos' element={<Vehiculos/>}/>
         <Route path='/servicios' element={<Servicios/>}/>
         <Route path='/promociones' element={<Ofertas/>}/>
+        
     </Routes>
 </Router>
   );
