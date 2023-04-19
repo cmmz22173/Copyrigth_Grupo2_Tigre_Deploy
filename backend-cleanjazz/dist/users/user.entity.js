@@ -10,13 +10,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.user = void 0;
+const cliente_entity_1 = require("../cliente/cliente.entity");
 const typeorm_1 = require("typeorm");
 let user = class user {
 };
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
-], user.prototype, "idUsuario", void 0);
+], user.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
@@ -26,9 +27,10 @@ __decorate([
     __metadata("design:type", String)
 ], user.prototype, "password", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.OneToOne)(() => cliente_entity_1.cliente),
+    (0, typeorm_1.JoinColumn)(),
     __metadata("design:type", Number)
-], user.prototype, "idCliente", void 0);
+], user.prototype, "Cliente", void 0);
 __decorate([
     (0, typeorm_1.Column)({ default: 'activo' }),
     __metadata("design:type", String)

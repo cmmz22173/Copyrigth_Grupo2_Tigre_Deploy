@@ -1,7 +1,7 @@
 export declare class user {
-    idUsuario: number;
+    id: number;
     username: string;
     password: string;
-    idCliente: number;
+    Cliente: number;
     estado: string;
 }

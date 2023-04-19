@@ -12,6 +12,24 @@ const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const users_module_1 = require("./users/users.module");
 const typeorm_1 = require("@nestjs/typeorm");
+const cliente_module_1 = require("./cliente/cliente.module");
+const grupo_module_1 = require("./grupo/grupo.module");
+const marca_module_1 = require("./marca/marca.module");
+const modelo_module_1 = require("./modelo/modelo.module");
+const vehiculo_module_1 = require("./vehiculo/vehiculo.module");
+const empleado_module_1 = require("./empleado/empleado.module");
+const puesto_module_1 = require("./puesto/puesto.module");
+const guardia_module_1 = require("./guardia/guardia.module");
+const administrativo_module_1 = require("./administrativo/administrativo.module");
+const lavador_module_1 = require("./lavador/lavador.module");
+const tipo_servicio_module_1 = require("./tipo_servicio/tipo_servicio.module");
+const servicio_module_1 = require("./servicio/servicio.module");
+const vehiculo_servicio_module_1 = require("./vehiculo_servicio/vehiculo_servicio.module");
+const tipo_producto_module_1 = require("./tipo_producto/tipo_producto.module");
+const producto_module_1 = require("./producto/producto.module");
+const inventario_module_1 = require("./inventario/inventario.module");
+const lavador_producto_module_1 = require("./lavador_producto/lavador_producto.module");
+const turno_guardia_module_1 = require("./turno-guardia/turno-guardia.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -29,7 +47,25 @@ AppModule = __decorate([
                 migrations: ['dist/migrations/*{.ts,.js}'],
                 migrationsRun: true,
             }),
-            users_module_1.UsersModule
+            users_module_1.UsersModule,
+            cliente_module_1.ClienteModule,
+            grupo_module_1.GrupoModule,
+            marca_module_1.MarcaModule,
+            modelo_module_1.ModeloModule,
+            vehiculo_module_1.VehiculoModule,
+            empleado_module_1.EmpleadoModule,
+            puesto_module_1.PuestoModule,
+            guardia_module_1.GuardiaModule,
+            administrativo_module_1.AdministrativoModule,
+            lavador_module_1.LavadorModule,
+            tipo_servicio_module_1.TipoServicioModule,
+            servicio_module_1.ServicioModule,
+            vehiculo_servicio_module_1.VehiculoServicioModule,
+            tipo_producto_module_1.TipoProductoModule,
+            producto_module_1.ProductoModule,
+            inventario_module_1.InventarioModule,
+            lavador_producto_module_1.LavadorProductoModule,
+            turno_guardia_module_1.TurnoGuardiaModule
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

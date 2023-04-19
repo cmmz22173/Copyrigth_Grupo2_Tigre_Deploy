@@ -9,7 +9,7 @@ export class UsersController {
     constructor(private userService: UsersService) { }
     //metodo para insertar usuarios
     @Post()
-    createUser(@Body() newUser: createUserDto) : Promise<user> {
+    createUser(@Body() newUser: createUserDto) {
         return this.userService.createUser(newUser)
     }
 
@@ -20,23 +20,21 @@ export class UsersController {
     }
 
     //metodo para obtener un usuario por id
-    @Get(':idUsuario')
-    getUser(@Param('idUsuario', ParseIntPipe) idUsuario: number): Promise<user> {
-        console.log(idUsuario)
-        console.log(typeof idUsuario)
-        return this.userService.getUser(idUsuario)
+    @Get(':id')
+    getUser(@Param('id', ParseIntPipe) id: number) {
+        return this.userService.getUser(id)
     }
 
     //metodo para borrar Usuario
-    @Delete(':idUsuario')
-    deleteUser(@Param('idUsuario', ParseIntPipe) idUsuario: number) {
-        return this.userService.deleteUser(idUsuario)
+    @Delete(':id')
+    deleteUser(@Param('id', ParseIntPipe) id: number) {
+        return this.userService.deleteUser(id)
     }
 
     //metodo para actualizar Usuario
-    @Patch(':idUsuario')
-    updateUser(@Param('idUsuario', ParseIntPipe) idUsuario: number, @Body() user: UpdateUserDto) {
-        return this.userService.updateUser(idUsuario, user)
+    @Patch(':id')
+    updateUser(@Param('id', ParseIntPipe) id: number, @Body() user: UpdateUserDto) {
+        return this.userService.updateUser(id, user)
 
     }
     

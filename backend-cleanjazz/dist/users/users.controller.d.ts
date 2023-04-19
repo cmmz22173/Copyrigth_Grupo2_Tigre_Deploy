@@ -5,9 +5,11 @@ import { UpdateUserDto } from './dto/update-user.dto';
 export declare class UsersController {
     private userService;
     constructor(userService: UsersService);
-    createUser(newUser: createUserDto): Promise<user>;
+    createUser(newUser: createUserDto): Promise<user | import("@nestjs/common").HttpException>;
     getUsers(): Promise<user[]>;
-    getUser(idUsuario: number): Promise<user>;
-    deleteUser(idUsuario: number): Promise<import("typeorm").DeleteResult>;
-    updateUser(idUsuario: number, user: UpdateUserDto): Promise<import("typeorm").UpdateResult>;
+    getUser(id: number): Promise<user | import("@nestjs/common").HttpException>;
+    deleteUser(id: number): Promise<import("@nestjs/common").HttpException | (user & {
+        estado: string;
+    })>;
+    updateUser(id: number, user: UpdateUserDto): Promise<import("@nestjs/common").HttpException | (user & UpdateUserDto)>;
 }

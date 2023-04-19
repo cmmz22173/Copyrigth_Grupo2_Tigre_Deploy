@@ -27,16 +27,14 @@ let UsersController = class UsersController {
     getUsers() {
         return this.userService.getUsers();
     }
-    getUser(idUsuario) {
-        console.log(idUsuario);
-        console.log(typeof idUsuario);
-        return this.userService.getUser(idUsuario);
+    getUser(id) {
+        return this.userService.getUser(id);
     }
-    deleteUser(idUsuario) {
-        return this.userService.deleteUser(idUsuario);
+    deleteUser(id) {
+        return this.userService.deleteUser(id);
     }
-    updateUser(idUsuario, user) {
-        return this.userService.updateUser(idUsuario, user);
+    updateUser(id, user) {
+        return this.userService.updateUser(id, user);
     }
 };
 __decorate([
@@ -44,7 +42,7 @@ __decorate([
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_user_dto_1.createUserDto]),
-    __metadata("design:returntype", Promise)
+    __metadata("design:returntype", void 0)
 ], UsersController.prototype, "createUser", null);
 __decorate([
     (0, common_1.Get)(),
@@ -53,22 +51,22 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "getUsers", null);
 __decorate([
-    (0, common_1.Get)(':idUsuario'),
-    __param(0, (0, common_1.Param)('idUsuario', common_1.ParseIntPipe)),
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", Promise)
+    __metadata("design:returntype", void 0)
 ], UsersController.prototype, "getUser", null);
 __decorate([
-    (0, common_1.Delete)(':idUsuario'),
-    __param(0, (0, common_1.Param)('idUsuario', common_1.ParseIntPipe)),
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "deleteUser", null);
 __decorate([
-    (0, common_1.Patch)(':idUsuario'),
-    __param(0, (0, common_1.Param)('idUsuario', common_1.ParseIntPipe)),
+    (0, common_1.Patch)(':id'),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, update_user_dto_1.UpdateUserDto]),

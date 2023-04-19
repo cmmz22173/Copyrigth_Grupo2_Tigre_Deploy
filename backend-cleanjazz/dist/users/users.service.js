@@ -21,25 +21,55 @@ let UsersService = class UsersService {
     constructor(userRepository) {
         this.userRepository = userRepository;
     }
-    createUser(user) {
+    async createUser(user) {
+        const userFound = await this.userRepository.findOne({
+            where: {
+                username: user.username
+            }
+        });
+        if (userFound) {
+            return new common_1.HttpException('User already exists', common_1.HttpStatus.CONFLICT);
+        }
         const newUser = this.userRepository.create(user);
         return this.userRepository.save(newUser);
     }
     getUsers() {
-        return this.userRepository.find();
+        return this.userRepository.find({ where: { estado: 'activo' } });
     }
-    getUser(idUsuario) {
-        return this.userRepository.findOne({
+    async getUser(id) {
+        const userFound = await this.userRepository.findOne({
             where: {
-                idUsuario
+                id
             }
         });
+        if (!userFound) {
+            return new common_1.HttpException('User not found', common_1.HttpStatus.NOT_FOUND);
+        }
+        return userFound;
     }
-    deleteUser(idUsuario) {
-        return this.userRepository.delete(idUsuario);
+    async deleteUser(id) {
+        const userFound = await this.userRepository.findOne({
+            where: {
+                id
+            }
+        });
+        if (!userFound) {
+            return new common_1.HttpException('User not found', common_1.HttpStatus.NOT_FOUND);
+        }
+        const updateUser = Object.assign(userFound, { estado: 'inactivo' });
+        return this.userRepository.save(updateUser);
     }
-    updateUser(idUsuario, user) {
-        return this.userRepository.update(idUsuario, user);
+    async updateUser(id, user) {
+        const userFound = await this.userRepository.findOne({
+            where: {
+                id
+            }
+        });
+        if (!userFound) {
+            return new common_1.HttpException('User not found', common_1.HttpStatus.NOT_FOUND);
+        }
+        const updateUser = Object.assign(userFound, user);
+        return this.userRepository.save(updateUser);
     }
 };
 UsersService = __decorate([
