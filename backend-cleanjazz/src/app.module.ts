@@ -13,14 +13,12 @@ import { PuestoModule } from './puesto/puesto.module';
 import { GuardiaModule } from './guardia/guardia.module';
 import { AdministrativoModule } from './administrativo/administrativo.module';
 import { LavadorModule } from './lavador/lavador.module';
-import { TipoServicioModule } from './tipo_servicio/tipo_servicio.module';
 import { ServicioModule } from './servicio/servicio.module';
-import { VehiculoServicioModule } from './vehiculo_servicio/vehiculo_servicio.module';
-import { TipoProductoModule } from './tipo_producto/tipo_producto.module';
 import { ProductoModule } from './producto/producto.module';
 import { InventarioModule } from './inventario/inventario.module';
-import { LavadorProductoModule } from './lavador_producto/lavador_producto.module';
 import { TurnoGuardiaModule } from './turno-guardia/turno-guardia.module';
+import { LavadorProductoModule } from './lavador-producto/lavador-producto.module';
+
 
 
 @Module({
@@ -48,10 +46,7 @@ import { TurnoGuardiaModule } from './turno-guardia/turno-guardia.module';
     GuardiaModule,
     AdministrativoModule,
     LavadorModule,
-    TipoServicioModule,
     ServicioModule,
-    VehiculoServicioModule,
-    TipoProductoModule,
     ProductoModule,
     InventarioModule,
     LavadorProductoModule,

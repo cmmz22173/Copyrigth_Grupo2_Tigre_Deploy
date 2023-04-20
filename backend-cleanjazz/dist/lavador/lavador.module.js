@@ -10,10 +10,13 @@ exports.LavadorModule = void 0;
 const common_1 = require("@nestjs/common");
 const lavador_controller_1 = require("./lavador.controller");
 const lavador_service_1 = require("./lavador.service");
+const typeorm_1 = require("@nestjs/typeorm");
+const lavador_entity_1 = require("./lavador.entity");
 let LavadorModule = class LavadorModule {
 };
 LavadorModule = __decorate([
     (0, common_1.Module)({
+        imports: [typeorm_1.TypeOrmModule.forFeature([lavador_entity_1.Lavador])],
         controllers: [lavador_controller_1.LavadorController],
         providers: [lavador_service_1.LavadorService]
     })

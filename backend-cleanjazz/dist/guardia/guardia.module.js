@@ -10,10 +10,13 @@ exports.GuardiaModule = void 0;
 const common_1 = require("@nestjs/common");
 const guardia_controller_1 = require("./guardia.controller");
 const guardia_service_1 = require("./guardia.service");
+const typeorm_1 = require("@nestjs/typeorm");
+const guardia_entity_1 = require("./guardia.entity");
 let GuardiaModule = class GuardiaModule {
 };
 GuardiaModule = __decorate([
     (0, common_1.Module)({
+        imports: [typeorm_1.TypeOrmModule.forFeature([guardia_entity_1.guardia])],
         controllers: [guardia_controller_1.GuardiaController],
         providers: [guardia_service_1.GuardiaService]
     })

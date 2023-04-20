@@ -6,8 +6,8 @@ import { updateTurnoGuardiaDto } from './dto/updateTurnoGuartia.dto';
 export declare class TurnoGuardiaService {
     private turnoGuardiaRepository;
     constructor(turnoGuardiaRepository: Repository<TurnoGuardia>);
-    createTurnoGuardia(turnoGuardia: createTurnoGuardiaDto): Promise<TurnoGuardia | HttpException>;
-    getTurnoGuardia(id: number): Promise<TurnoGuardia | HttpException>;
+    createTurnoGuardia(turnoGuardia: createTurnoGuardiaDto): Promise<HttpException | TurnoGuardia>;
+    getTurnoGuardia(id: number): Promise<HttpException | TurnoGuardia>;
     getTurnosGuardia(): Promise<HttpException | TurnoGuardia[]>;
     updateTurnoGuardia(id: number, turnoGuardia: updateTurnoGuardiaDto): Promise<HttpException | (TurnoGuardia & updateTurnoGuardiaDto)>;
 }

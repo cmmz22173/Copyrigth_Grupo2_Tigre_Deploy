@@ -47,11 +47,6 @@ export class UsersService {
 
     //metodo para borrar Usuario con httpException
     async deleteUser(id: number){
-        //const result = await this.userRepository.delete(idUsuario)
-        //if(result.affected === 0){
-        //    return new HttpException('User not found', HttpStatus.NOT_FOUND)
-       // }
-        //return result;
         
         const userFound = await this.userRepository.findOne({
             where: {

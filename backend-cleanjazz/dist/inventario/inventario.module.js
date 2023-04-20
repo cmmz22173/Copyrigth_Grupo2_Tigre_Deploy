@@ -10,10 +10,13 @@ exports.InventarioModule = void 0;
 const common_1 = require("@nestjs/common");
 const inventario_controller_1 = require("./inventario.controller");
 const inventario_service_1 = require("./inventario.service");
+const typeorm_1 = require("@nestjs/typeorm");
+const inventario_entity_1 = require("./inventario.entity");
 let InventarioModule = class InventarioModule {
 };
 InventarioModule = __decorate([
     (0, common_1.Module)({
+        imports: [typeorm_1.TypeOrmModule.forFeature([inventario_entity_1.Inventario])],
         controllers: [inventario_controller_1.InventarioController],
         providers: [inventario_service_1.InventarioService]
     })
