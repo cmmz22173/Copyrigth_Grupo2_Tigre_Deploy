@@ -21,7 +21,10 @@ import Avatar from '@mui/material/Avatar';
 import { Card} from '@mui/material';
 import CardContent from '@mui/material/CardContent';
 import { Link } from "react-router-dom";
-
+import Endpoint from '../services/Endpoint';
+import { useState } from 'react';
+import axios from 'axios';
+import ProfileMenuButton from '../components/ProfileMenuButton';
 
 function Copyright(props) {
   return (
@@ -52,7 +55,7 @@ function CardGroup({ cardsData }) {
             width: 300
           }}}>
              <Typography component="div" sx={{fontFamily: 'Font Awesome 5 Free',letterSpacing: "0.12em",fontWeight: 400}}>
-               {card.title}
+               {card.nombreServicio}
              </Typography>
              <Typography sx={{fontFamily: 'Font Awesome 5 Free',letterSpacing: "0.12em",fontWeight: 400,fontSize:13,mt:1}} color="text.secondary" component="div">
                {card.descripcion}
@@ -121,7 +124,18 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const mdTheme = createTheme();
 
 export default function Servicios() {
-  
+  const[cardsData,setCardsData]=useState([]);
+
+  React.useEffect(() => {
+      axios.get(`${Endpoint.apiEndpoint}/tipo-servicio`)
+        .then(response => {
+          setCardsData(response.data);
+          console.log(cardsData)
+        })
+        .catch(error => {
+          console.log(error);
+        })
+    }, []);
   const [open, setOpen] = React.useState(false);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -129,6 +143,7 @@ export default function Servicios() {
    
   
   };
+ /* 
  const cardsData = [
         {
           title: 'Lavado',
@@ -153,7 +168,7 @@ export default function Servicios() {
         
        
         
-      ];
+      ]; */
 
   return (
     
@@ -195,9 +210,7 @@ export default function Servicios() {
 
             </Typography>
             <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
+            <ProfileMenuButton/>
             </IconButton>
           </Toolbar>
         </AppBar>

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiDrawer from '@mui/material/Drawer';
@@ -21,7 +21,10 @@ import Avatar from '@mui/material/Avatar';
 import { Card} from '@mui/material';
 import CardContent from '@mui/material/CardContent';
 import { Link } from "react-router-dom";
-
+import Endpoint from '../services/Endpoint';
+import { useState } from 'react';
+import axios from 'axios';
+import ProfileMenuButton from '../components/ProfileMenuButton';
 
 function Copyright(props) {
   return (
@@ -38,6 +41,8 @@ function Copyright(props) {
 
 
 function CardGroup({ cardsData }) {
+
+
     return (
       <Grid  container rowSpacing={0} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         
@@ -51,16 +56,22 @@ function CardGroup({ cardsData }) {
            <CardContent sx={{ '@media (max-width:800px)': {
             width: 300
           }}}>
-             <Typography component="div" sx={{fontFamily: 'Font Awesome 5 Free',letterSpacing: "0.12em",fontWeight: 400}}>
-               {card.title}
-               <Typography sx={{fontFamily: 'Font Awesome 5 Free',letterSpacing: "0.12em",fontWeight: 400,fontSize:13,mt:1,textAlign:"right"}} color="red" component="div">
-               Expiracion: {card.expiracion}
+            <Grid container>
+            <Grid item xs={12} textAlign={"start"}> 
+              <Typography component="div"  sx={{fontFamily: 'Font Awesome 5 Free',letterSpacing: "0.12em",fontWeight: 400}}>
+               {card.nombreServicio}
+               <Typography  sx={{fontFamily: 'Font Awesome 5 Free',letterSpacing: "0.12em",fontWeight: 400,fontSize:13,mt:1,textAlign:"right"}} color="red" component="div">
+               Expiracion: {"26/04/23"}
              </Typography>
              </Typography>
-             
+              </Grid>
+            
+              <Grid item xs={12}> 
              <Typography sx={{fontFamily: 'Font Awesome 5 Free',letterSpacing: "0.12em",fontWeight: 400,fontSize:13,mt:1}} color="text.secondary" component="div">
                {card.descripcion}
              </Typography>
+             </Grid>
+             <Grid item xs={12}> 
              <Box sx={{display: "flex"}}>
                 <Typography sx={{fontFamily: 'Font Awesome 5 Free',letterSpacing: "0.12em",fontWeight: 400,fontSize:13,mt:1,mr:3,textAlign:"right",textDecoration:"line-through"}} color="text.primary" component="div">
                    {card.precio}
@@ -69,6 +80,9 @@ function CardGroup({ cardsData }) {
                    {card.precio-(card.precio*0.2)} Lps
                 </Typography>
              </Box>
+             </Grid>
+
+             </Grid>
            </CardContent>
          
       
@@ -129,7 +143,18 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const mdTheme = createTheme();
 
 export default function Ofertas() {
-  
+  const[cardsData,setCardsData]=useState([]);
+
+  React.useEffect(() => {
+      axios.get(`${Endpoint.apiEndpoint}/tipo-servicio`)
+        .then(response => {
+          setCardsData(response.data);
+          console.log(cardsData)
+        })
+        .catch(error => {
+          console.log(error);
+        })
+    }, []);
   const [open, setOpen] = React.useState(false);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -137,6 +162,8 @@ export default function Ofertas() {
    
   
   };
+
+  /*
  const cardsData = [
         {
           title: 'Lavado',
@@ -166,6 +193,8 @@ export default function Ofertas() {
        
         
       ];
+
+      */
 
   return (
     
@@ -207,9 +236,7 @@ export default function Ofertas() {
 
             </Typography>
             <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
+            <ProfileMenuButton/>
             </IconButton>
           </Toolbar>
         </AppBar>

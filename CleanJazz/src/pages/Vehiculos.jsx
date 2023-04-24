@@ -24,7 +24,7 @@ import { Card} from '@mui/material';
 import CardContent from '@mui/material/CardContent';
 import {CardMedia} from '@mui/material';
 import { Link } from "react-router-dom";
-
+import ProfileMenuButton from '../components/ProfileMenuButton';
 
 function Copyright(props) {
   return (
@@ -213,9 +213,7 @@ export default function Vehiculos() {
 
             </Typography>
             <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
+            <ProfileMenuButton/>
             </IconButton>
           </Toolbar>
         </AppBar>

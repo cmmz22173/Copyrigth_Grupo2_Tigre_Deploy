@@ -18,7 +18,7 @@ import Container from '@mui/material/Container';
 import { Link } from "react-router-dom";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Slidershow from '../components/Slideshow';
-
+import ProfileMenuButton from '../components/ProfileMenuButton';
 
 
 function Slide(props) {
@@ -46,8 +46,8 @@ function Copyright(props) {
 
 const tiers = [
   {
-    title: 'Free',
-    price: '0',
+    title: 'Mensual',
+    price: '9',
     description: [
       '10 users included',
       '2 GB of storage',
@@ -58,9 +58,9 @@ const tiers = [
     buttonVariant: 'outlined',
   },
   {
-    title: 'Pro',
-    subheader: 'Most popular',
-    price: '15',
+    title: 'Anual',
+    subheader: 'Favorita',
+    price: '100',
     description: [
       '20 users included',
       '10 GB of storage',
@@ -71,8 +71,8 @@ const tiers = [
     buttonVariant: 'contained',
   },
   {
-    title: 'Enterprise',
-    price: '30',
+    title: 'Perpetua',
+    price: '1000',
     description: [
       '50 users included',
       '30 GB of storage',

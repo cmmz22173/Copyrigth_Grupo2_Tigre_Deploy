@@ -34,6 +34,7 @@ import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import discount from '../images/discount.png'
 import { Link } from "react-router-dom";
+import ProfileMenuButton from '../components/ProfileMenuButton';
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -144,9 +145,14 @@ function DashboardContent() {
 
             </Typography>
             <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
+              
+
+
+                <ProfileMenuButton/>
+
+
+
+              
             </IconButton>
           </Toolbar>
         </AppBar>

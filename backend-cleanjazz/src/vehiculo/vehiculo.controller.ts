@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Patch, Post } from '@nestjs/common';
+import { Controller, Delete, Get, Patch, Post,Body } from '@nestjs/common';
 import { VehiculoService } from './vehiculo.service';
 import { CreateVehiculoDto } from './dto/create-vehiculo.dto';
 
@@ -9,8 +9,8 @@ export class VehiculoController {
 
     //metodo para insertar vehiculos
     @Post() 
-    async createVehiculo(vehiculo: CreateVehiculoDto){
-        return this.vehiculoService.createVehiculo(vehiculo)
+    async createVehiculo(@Body() newVehiculo: CreateVehiculoDto){
+        return this.vehiculoService.createVehiculo(newVehiculo)
     }
 
     //metodo para obtener todos los vehiculos

@@ -12,6 +12,9 @@ import { BrowserRouter as Router,
  import Vehiculos from '../pages/Vehiculos';
  import Servicios from '../pages/Servicios';
  import Ofertas from '../pages/Ofertas';
+ import { isTokenValid } from '../services/Guard';
+ import { Navigate } from 'react-router-dom';
+
 function Rutas() {
   return (
     <Router>
@@ -21,12 +24,12 @@ function Rutas() {
 
         <Route path="/prueba" element={<Prueba/>}/>
 
-        <Route path='/home' element={<Home/>}/>
+        <Route path='/home' element={isTokenValid() === 'autenticado'?<Home/>:<Navigate to={"/login"}/>}/>
         <Route path="*" element={<Error/>}/>
         
-        <Route path='/vehiculos' element={<Vehiculos/>}/>
-        <Route path='/servicios' element={<Servicios/>}/>
-        <Route path='/promociones' element={<Ofertas/>}/>
+        <Route path='/vehiculos' element={isTokenValid() === 'autenticado'?<Vehiculos/>:<Navigate to={"/login"}/>}/>
+        <Route path='/servicios' element={isTokenValid() === 'autenticado'?<Servicios/>:<Navigate to={"/login"}/>}/>
+        <Route path='/promociones' element={isTokenValid() === 'autenticado'?<Ofertas/>:<Navigate to={"/login"}/>}/>
         
     </Routes>
 </Router>
