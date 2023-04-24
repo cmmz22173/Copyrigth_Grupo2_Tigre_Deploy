@@ -14,7 +14,10 @@ import '../styles/Login.css'
 import logo from '../images/CleanJazz.png'
 import car from '../images/car1.jpg'
 import { Link } from "react-router-dom";
-
+import Cookies from "js-cookie";
+import axios from "axios";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -28,14 +31,31 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignInSide() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+export default function Login() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [accessToken, setAccessToken] = useState('');
+  const navigate = useNavigate();
+  
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post(`http://localhost:3000/users/login`, { username, password });
+      setAccessToken(response.data.accessToken);
+      Cookies.set('accessToken', response.data.accessToken);
+      alert("Bienvenido")
+      
+      // redireccionar a la página de dashboard después del inicio de sesión
+    } catch (error) {
+      alert('Credenciales inválidas');
+      
+    }
+	handleRefreshClick()
+     navigate("/")
+	 
+  }
+
+  const handleRefreshClick = () => {
+    window.location.reload();
   };
 
   return (
@@ -78,7 +98,7 @@ export default function SignInSide() {
             <Typography component="h1" variant="h5">
               Iniciar Sesión
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1}}>
+            <Box  sx={{ mt: 1}}>
               <TextField
                 margin="normal"
                 required
@@ -89,7 +109,8 @@ export default function SignInSide() {
                 autoComplete="email"
                 autoFocus
                 color="warning"
-
+                value={username}
+                onChange={e => setUsername(e.target.value)}
               />
               <TextField
                 margin="normal"
@@ -101,14 +122,16 @@ export default function SignInSide() {
                 id="password"
                 autoComplete="current-password"
                 color="warning"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Recuérdame"
               />
-              <Link to={"/home"} style={{ textDecoration: 'none' }}>
+              
               <Button
-                type="submit"
+                onClick={handleLogin}
                 fullWidth
                 variant="contained"
                 sx={{ mt: 2, mb: 1,backgroundColor: '#F7C04A',
@@ -117,9 +140,9 @@ export default function SignInSide() {
                   
                 },}}
               >
-                Iniciar Sesión
+                Iniciar Sesión {accessToken && accessToken}
               </Button>
-              </Link>
+              
               <Grid container>
                 <Grid item xs>
                   <Link href="#" variant="body2">
