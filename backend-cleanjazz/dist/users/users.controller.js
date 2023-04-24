@@ -17,9 +17,12 @@ const common_1 = require("@nestjs/common");
 const create_user_dto_1 = require("./dto/create-user.dto");
 const users_service_1 = require("./users.service");
 const update_user_dto_1 = require("./dto/update-user.dto");
+const jwt_1 = require("@nestjs/jwt");
+const common_2 = require("@nestjs/common");
 let UsersController = class UsersController {
-    constructor(userService) {
+    constructor(userService, jwtService) {
         this.userService = userService;
+        this.jwtService = jwtService;
     }
     createUser(newUser) {
         return this.userService.createUser(newUser);
@@ -35,6 +38,19 @@ let UsersController = class UsersController {
     }
     updateUser(id, user) {
         return this.userService.updateUser(id, user);
+    }
+    async login(credentials) {
+        const { username, password } = credentials;
+        const user = await this.userService.findOne(username);
+        if (user) {
+            const isValidPassword = await password === user.password ? true : false;
+            if (isValidPassword) {
+                const payload = { username: user.username, sub: user.id };
+                const accessToken = this.jwtService.sign(payload, { expiresIn: '30m' });
+                return { accessToken };
+            }
+        }
+        throw new common_2.UnauthorizedException('Credenciales inválidas');
     }
 };
 __decorate([
@@ -72,9 +88,17 @@ __decorate([
     __metadata("design:paramtypes", [Number, update_user_dto_1.UpdateUserDto]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "updateUser", null);
+__decorate([
+    (0, common_1.Post)('login'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "login", null);
 UsersController = __decorate([
     (0, common_1.Controller)('users'),
-    __metadata("design:paramtypes", [users_service_1.UsersService])
+    __metadata("design:paramtypes", [users_service_1.UsersService,
+        jwt_1.JwtService])
 ], UsersController);
 exports.UsersController = UsersController;
 //# sourceMappingURL=users.controller.js.map

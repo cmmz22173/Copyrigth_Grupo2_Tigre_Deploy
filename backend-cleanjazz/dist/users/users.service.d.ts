@@ -13,4 +13,5 @@ export declare class UsersService {
         estado: string;
     })>;
     updateUser(id: number, user: UpdateUserDto): Promise<HttpException | (user & UpdateUserDto)>;
+    findOne(username: string): Promise<user>;
 }

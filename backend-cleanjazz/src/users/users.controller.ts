@@ -51,7 +51,7 @@ export class UsersController {
   
       if (user) {
         // Verificar si la contraseña es válida
-        const isValidPassword = await bcrypt.compare(password, user.password);
+        const isValidPassword = await password===user.password?true:false;
   
         if (isValidPassword) {
           // Generar el token JWT

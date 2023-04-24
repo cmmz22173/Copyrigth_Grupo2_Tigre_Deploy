@@ -180,10 +180,11 @@ function DashboardContent() {
           }}
         >
           <Toolbar />
-          <Container maxWidth="xl" sx={{ml:4,mt: 7, mb: 4 }}>
+          <Container maxWidth="md" sx={{ml:4,mt: 7, mb: 4 }}>
             <Grid container spacing={3}>
              
               <Stack 
+              
                direction={{ xs: 'column', sm: 'row' }}
                spacing={{ xs: 1, sm: 2, md: 4 }}
                justifyContent="flex-start"

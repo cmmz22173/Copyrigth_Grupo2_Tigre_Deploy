@@ -71,6 +71,9 @@ let UsersService = class UsersService {
         const updateUser = Object.assign(userFound, user);
         return this.userRepository.save(updateUser);
     }
+    async findOne(username) {
+        return await this.userRepository.findOne({ where: { username } });
+    }
 };
 UsersService = __decorate([
     (0, common_1.Injectable)(),
